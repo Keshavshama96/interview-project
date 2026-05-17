@@ -1,3 +1,5 @@
+import Scan from "../models/Scan.js";
+
 export const analyzeScam = async (req, res) => {
   try {
     const { message } = req.body;
@@ -57,12 +59,38 @@ export const analyzeScam = async (req, res) => {
       isScam = false;
     }
 
+    const scan = await Scan.create({
+      user: req.user._id,
+      message,
+      riskScore: finalRiskScore,
+      riskLevel,
+      isScam,
+      matchedKeywords,
+    });
+
     res.status(200).json({
       message: "Scam analysis completed",
       isScam,
       riskScore: finalRiskScore,
       riskLevel,
       matchedKeywords,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
+};
+
+export const getScanHistory = async (req, res) => {
+  try {
+    const scans = await Scan.find({ user: req.user._id }).sort({
+      createdAt: -1,
+    });
+
+    res.status(200).json({
+      message: "Scan history fetched successfully",
+      scans,
     });
   } catch (error) {
     res.status(500).json({
