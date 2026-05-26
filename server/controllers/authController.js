@@ -1,20 +1,13 @@
 // business logic
 // main backend functionality
 
-// Example:
-// register logic
-// login logic
-
-
-//“Is there already a user with this email in MongoDB?”
-
 import User from "../models/User.js";
-import bcrypt from "bcryptjs";//brcypt import
-import jwt from "jsonwebtoken";//JWT import
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
 // Register User Controller
 export const registerUser = async (req, res) => {
   try {
-
     // Taking name, email and password from frontend request body
     const { name, email, password } = req.body;
 
@@ -28,7 +21,9 @@ export const registerUser = async (req, res) => {
       });
     }
 
+    // Hash password before saving
     const hashedPassword = await bcrypt.hash(password, 10);
+
     // Creating new user in MongoDB database
     const user = await User.create({
       name,
@@ -36,23 +31,26 @@ export const registerUser = async (req, res) => {
       password: hashedPassword,
     });
 
+    // Generate JWT token after successful registration
+    const token = jwt.sign(
+      { id: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
 
     // Sending success response after registration
     res.status(201).json({
       message: "User registered successfully",
+      token,
       user,
     });
-
   } catch (error) {
-
     // If any server/database error occurs
     res.status(500).json({
       message: "Server Error",
     });
   }
 };
-
-
 
 
 export const loginUser = async (req, res) => {

@@ -4,6 +4,7 @@ import "./Login.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
 
   const handleLogin = async (e) => {
@@ -54,12 +55,21 @@ function Login() {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+   <div className="password-box">
+      <input
+        type={showPassword ? "text" : "password"}
+        placeholder="Enter password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <span
+        className="eye-icon"
+        onClick={() => setShowPassword(!showPassword)}
+       >
+        {showPassword ? "🙈" : "👁️"}
+      </span>
+    </div>
 
           <button type="submit">Login</button>
         </form>

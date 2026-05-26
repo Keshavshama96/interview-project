@@ -16,7 +16,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/scam", scamRoutes);
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) => {z
   res.send("ScamShield Backend is running");
 });
 
