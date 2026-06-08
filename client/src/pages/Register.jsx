@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Login.css";
 
-function Register() {
+function Register({ setIsLoggedIn }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +32,7 @@ function Register() {
 
     if (data.token) {
       localStorage.setItem("token", data.token);
+      setIsLoggedIn(true);
     }
 
     setSuccessMessage(" User Registered Successfully");

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Analyze.css";
 
-function Analyze() {
+function Analyze({ setCurrentPage }) {
   const [message, setMessage] = useState("");
   const [result, setResult] = useState(null);
 
@@ -68,46 +68,52 @@ const getStatusClass = () => {
 };
 
   return (
-    <div className="analyze-container">
-      <div className="analyze-box">
-        <h2>ScamShield Analyzer</h2>
+  <div className="analyze-container">
+    <button
+      className="back-button"
+      onClick={() => setCurrentPage("dashboard")}
+    >
+      Back to Dashboard
+    </button>
 
-        <textarea
-          placeholder="Paste suspicious message here..."
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        ></textarea>
+    <div className="analyze-box">
+      <h2>ScamShield Analyzer</h2>
 
-        <button onClick={handleAnalyze}>Analyze</button>
-        {result && (
-   <div className="result-box">
-    <h3>Analysis Result</h3>
+      <textarea
+        placeholder="Paste suspicious message here..."
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      ></textarea>
 
-    <p>
-    <strong>Status:</strong>{" "}
-    <span className={getStatusClass()}>
-    {getStatusText()}
-    </span>
-    </p>
+      <button onClick={handleAnalyze}>Analyze</button>
 
-    <p>
-      <strong>Risk Score:</strong> {result.riskScore}
-    </p>
+      {result && (
+        <div className="result-box">
+          <h3>Analysis Result</h3>
 
-    <p>
-     <strong>Risk Level:</strong>{" "}
-     <span className={getRiskClass()}>{result.riskLevel}</span>
-    </p>
+          <p>
+            <strong>Status:</strong>{" "}
+            <span className={getStatusClass()}>{getStatusText()}</span>
+          </p>
 
-    <p>
-      <strong>Matched Keywords:</strong>{" "}
-      {result.matchedKeywords.join(", ")}
-    </p>
-  </div>
-)}
-      </div>
+          <p>
+            <strong>Risk Score:</strong> {result.riskScore}
+          </p>
+
+          <p>
+            <strong>Risk Level:</strong>{" "}
+            <span className={getRiskClass()}>{result.riskLevel}</span>
+          </p>
+
+          <p>
+            <strong>Matched Keywords:</strong>{" "}
+            {result.matchedKeywords.join(", ")}
+          </p>
+        </div>
+      )}
     </div>
-  );
+  </div>
+);
 }
 
 export default Analyze;

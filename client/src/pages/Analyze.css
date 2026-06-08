@@ -1,56 +1,69 @@
 .analyze-container {
   height: 100vh;
-
   background-color: #0f172a;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 0;
+  overflow: hidden;
 }
 
 .analyze-box {
-  width: 600px;
+  width: 650px;
 
   background-color: #1e293b;
 
-  padding: 30px;
+  padding: 32px;
 
-  border-radius: 12px;
+  border-radius: 16px;
 
   display: flex;
   flex-direction: column;
 
-  gap: 20px;
+  gap: 18px;
 
-  box-shadow: 0px 0px 20px rgba(37, 99, 235, 0.3);
+  box-shadow: 0px 0px 25px rgba(37, 99, 235, 0.4);
 }
 
 .analyze-box h2 {
-  color: white;
+  color: #60a5fa;
   text-align: center;
 }
 
 .analyze-box textarea {
-  height: 150px;
+  height: 170px;
 
   resize: none;
 
   padding: 15px;
 
-  border: 1px solid #2563eb;
-  border-radius: 8px;
+  border: 2px solid transparent;
+  border-radius: 10px;
 
   background-color: #334155;
   color: white;
 
   font-size: 16px;
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+.analyze-box textarea:hover,
+.analyze-box textarea:focus {
+  border-color: #3b82f6;
+
+  box-shadow: 0px 0px 15px rgba(59, 130, 246, 0.5);
 }
 
 .analyze-box button {
-  padding: 12px;
+  padding: 13px;
 
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
 
   background-color: #2563eb;
   color: white;
@@ -59,14 +72,18 @@
   font-weight: bold;
 
   cursor: pointer;
+
+  transition: 0.3s;
 }
 
 .analyze-box button:hover {
   background-color: #1d4ed8;
+
+  transform: scale(1.03);
 }
 
 .result-box {
-  margin-top: 20px;
+  margin-top: 10px;
 
   padding: 20px;
 
@@ -74,9 +91,11 @@
 
   border: 1px solid #2563eb;
 
-  border-radius: 10px;
+  border-radius: 12px;
 
   color: white;
+
+  box-shadow: 0px 0px 15px rgba(37, 99, 235, 0.25);
 }
 
 .result-box h3 {
@@ -105,7 +124,6 @@
   color: #22c55e;
   font-weight: bold;
 }
-
 
 .status-scam {
   color: #ef4444;

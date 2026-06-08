@@ -1,0 +1,66 @@
+.dashboard-container {
+  height: 100vh;
+  background-color: #0f172a;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+}
+
+.dashboard-card {
+  width: 500px;
+
+  background-color: #1e293b;
+
+  padding: 40px;
+
+  border-radius: 16px;
+
+  text-align: center;
+
+  box-shadow: 0px 0px 25px rgba(37, 99, 235, 0.4);
+}
+
+.dashboard-card h1 {
+  color: #60a5fa;
+
+  margin-bottom: 10px;
+}
+
+.dashboard-subtitle {
+  color: #cbd5e1;
+
+  margin-bottom: 30px;
+}
+
+.dashboard-actions {
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.dashboard-actions button {
+  padding: 13px;
+
+  border: none;
+  border-radius: 10px;
+
+  background-color: #2563eb;
+  color: white;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.dashboard-actions button:hover {
+  background-color: #1d4ed8;
+
+  transform: scale(1.03);
+}

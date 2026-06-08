@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Login.css";
 
-function Login() {
+function Login({ setIsLoggedIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -30,8 +30,8 @@ function Login() {
     console.log(data);
 
     if (data.token) {
-      localStorage.setItem("token", data.token);
-      alert("Login Successful");
+     localStorage.setItem("token", data.token);
+     setIsLoggedIn(true);
     }
   };
 
