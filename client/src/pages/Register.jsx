@@ -12,7 +12,7 @@ function Register({ setIsLoggedIn }) {
 
     console.log("Register button clicked");
 
-    const response = await fetch("http://localhost:8000/api/auth/register", {
+    const response = await fetch("https://scamshield-backend-dj3g.onrender.com/api/auth/register", {
       method: "POST",
 
       headers: {

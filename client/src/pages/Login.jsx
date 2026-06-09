@@ -12,7 +12,7 @@ function Login({ setIsLoggedIn }) {
 
     console.log("Login button clicked");
 
-    const response = await fetch("http://localhost:8000/api/auth/login", {
+    const response = await fetch("https://scamshield-backend-dj3g.onrender.com/api/auth/login", {
       method: "POST",
 
       headers: {

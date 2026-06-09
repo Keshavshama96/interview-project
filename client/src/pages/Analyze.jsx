@@ -12,7 +12,7 @@ function Analyze({ setCurrentPage }) {
 
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:8000/api/scam/analyze", {
+    const response = await fetch("https://scamshield-backend-dj3g.onrender.comS/api/scam/analyze", {
       method: "POST",
 
       headers: {

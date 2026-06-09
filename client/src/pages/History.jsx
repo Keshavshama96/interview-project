@@ -8,7 +8,7 @@ function History({ setCurrentPage }) {
     const fetchHistory = async () => {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:8000/api/scam/history", {
+      const response = await fetch("https://scamshield-backend-dj3g.onrender.com/api/scam/history", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
