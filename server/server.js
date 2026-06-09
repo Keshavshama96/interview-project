@@ -16,11 +16,11 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/scam", scamRoutes);
 
-app.get("/", (req, res) => {z
+app.get("/", (req, res) => {
   res.send("ScamShield Backend is running");
 });
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
