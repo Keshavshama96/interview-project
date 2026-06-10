@@ -6,6 +6,7 @@ function Login({ setIsLoggedIn }) {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,10 +31,12 @@ function Login({ setIsLoggedIn }) {
     console.log(data);
 
     if (data.token) {
-     localStorage.setItem("token", data.token);
-     setIsLoggedIn(true);
-    }
-  };
+      localStorage.setItem("token", data.token);
+      setIsLoggedIn(true);
+      } else {
+      alert(data.message || "Invalid Email or Password");
+      }
+    };
 
   return (
     <div className={darkMode ? "login-container" : "light-container"}>
